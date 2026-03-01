@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Depresión en los Jóvenes - Situación Actual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.2rem;
+            margin: 20px 0 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #ebf5fb, #d6eaf8);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+
+        .stat-card .number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2980b9;
+            display: block;
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            color: #5d6d7e;
+            margin-top: 5px;
+        }
+
+        .warning-box {
+            background: #fef9e7;
+            border-left: 4px solid #f39c12;
+            padding: 20px 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+
+        .warning-box strong {
+            color: #e67e22;
+        }
+
+        .help-box {
+            background: linear-gradient(135deg, #eafaf1, #d5f5e3);
+            border-left: 4px solid #27ae60;
+            padding: 20px 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+
+        .help-box strong {
+            color: #27ae60;
+        }
+
+        .cause-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #fafafa;
+            border-radius: 8px;
+        }
+
+        .cause-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid #ecf0f1;
+            border-bottom: 1px solid #ecf0f1;
+            margin: 25px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        th {
+            background: #2c3e50;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #ebf5fb;
+        }
+
+        .hotline {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .hotline h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .hotline p {
+            text-align: center;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .hotline a {
+            color: #fad7a0;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hotline a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #95a5a6;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>La Depresion en los Jovenes</h1>
+    <p>Un analisis de la situacion actual, causas, consecuencias y caminos hacia la esperanza</p>
+</header>
+
+<div class="container">
+
+    <!-- Introduccion -->
+    <section>
+        <h2>Introduccion</h2>
+        <p>
+            La depresion en los jovenes se ha convertido en una de las crisis de salud publica mas urgentes del siglo XXI.
+            Segun la Organizacion Mundial de la Salud (OMS), la depresion es la principal causa de discapacidad en adolescentes
+            y jovenes adultos a nivel mundial. Lo que antes se consideraba un problema exclusivo de adultos, hoy afecta a
+            millones de personas entre los 12 y 25 anos, con cifras que han aumentado dramaticamente en la ultima decada.
+        </p>
+        <p>
+            Esta pagina presenta un panorama completo y actualizado sobre la depresion juvenil: las cifras que definen la
+            crisis, las causas que la alimentan, las senales de alerta, su impacto y, sobre todo, los recursos disponibles
+            para buscar ayuda.
+        </p>
+    </section>
+
+    <!-- Cifras alarmantes -->
+    <section>
+        <h2>Cifras que definen la crisis</h2>
+
+        <div class="stat-grid">
+            <div class="stat-card">
+                <span class="number">280M+</span>
+                <span class="label">Personas con depresion en el mundo (OMS, 2023)</span>
+            </div>
+            <div class="stat-card">
+                <span class="number">1 de 7</span>
+                <span class="label">Adolescentes (10-19 anos) padece un trastorno mental</span>
+            </div>
+            <div class="stat-card">
+                <span class="number">+25%</span>
+                <span class="label">Aumento de depresion y ansiedad tras la pandemia COVID-19</span>
+            </div>
+            <div class="stat-card">
+                <span class="number">2a causa</span>
+                <span class="label">De muerte en jovenes de 15-29 anos: el suicidio (OMS)</span>
+            </div>
+        </div>
+
+        <h3>Datos por region</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Region</th>
+                    <th>Dato relevante</th>
+                    <th>Fuente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Global</td>
+                    <td>El 14% de los adolescentes experimenta algun trastorno mental</td>
+                    <td>OMS, 2024</td>
+                </tr>
+                <tr>
+                    <td>Estados Unidos</td>
+                    <td>El 20% de los jovenes (12-17) tuvo al menos un episodio depresivo mayor en 2023</td>
+                    <td>NIMH</td>
+                </tr>
+                <tr>
+                    <td>America Latina</td>
+                    <td>Brasil, Mexico y Colombia lideran en tasas de depresion juvenil en la region</td>
+                    <td>OPS, 2023</td>
+                </tr>
+                <tr>
+                    <td>Europa</td>
+                    <td>1 de cada 5 jovenes reporta sintomas depresivos persistentes</td>
+                    <td>Eurostat, 2023</td>
+                </tr>
+                <tr>
+                    <td>Espana</td>
+                    <td>Los casos de depresion en menores de 25 anos se duplicaron entre 2019 y 2023</td>
+                    <td>INE / Min. Sanidad</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Causas -->
+    <section>
+        <h2>Causas principales</h2>
+        <p>
+            La depresion juvenil es multifactorial. No existe una unica causa, sino una combinacion de factores
+            biologicos, psicologicos y sociales que interactuan entre si.
+        </p>
+
+        <div class="cause-item">
+            <div class="cause-icon">📱</div>
+            <div>
+                <h3>Redes sociales y mundo digital</h3>
+                <p>
+                    La exposicion constante a redes sociales genera comparacion social, ciberacoso, FOMO
+                    (miedo a perderse algo) y adiccion a las pantallas. Estudios recientes vinculan el uso
+                    excesivo de redes sociales (mas de 3 horas diarias) con un aumento significativo en los
+                    sintomas depresivos en adolescentes.
+                </p>
+            </div>
+        </div>
+
+        <div class="cause-item">
+            <div class="cause-icon">🎓</div>
+            <div>
+                <h3>Presion academica y laboral</h3>
+                <p>
+                    La presion por obtener buenas calificaciones, ingresar a universidades competitivas y
+                    encontrar empleo en un mercado laboral cada vez mas exigente genera niveles de estres
+                    que muchos jovenes no saben manejar. La incertidumbre economica agrava esta situacion.
+                </p>
+            </div>
+        </div>
+
+        <div class="cause-item">
+            <div class="cause-icon">🏠</div>
+            <div>
+                <h3>Entorno familiar y social</h3>
+                <p>
+                    Conflictos familiares, divorcios, abuso emocional o fisico, negligencia y falta de apoyo
+                    emocional son factores de riesgo significativos. La soledad y el aislamiento social,
+                    agravados tras la pandemia, tambien contribuyen de manera importante.
+                </p>
+            </div>
+        </div>
+
+        <div class="cause-item">
+            <div class="cause-icon">🧬</div>
+            <div>
+                <h3>Factores biologicos y geneticos</h3>
+                <p>
+                    La predisposicion genetica, los desequilibrios quimicos cerebrales (serotonina, dopamina,
+                    norepinefrina) y los cambios hormonales propios de la adolescencia hacen que algunos
+                    jovenes sean mas vulnerables a desarrollar depresion.
+                </p>
+            </div>
+        </div>
+
+        <div class="cause-item">
+            <div class="cause-icon">🌍</div>
+            <div>
+                <h3>Crisis globales y eco-ansiedad</h3>
+                <p>
+                    El cambio climatico, las pandemias, la inestabilidad politica y la incertidumbre sobre
+                    el futuro generan lo que se conoce como "eco-ansiedad" y desesperanza generalizada en
+                    las generaciones mas jovenes, que sienten que heredan un mundo en crisis.
+                </p>
+            </div>
+        </div>
+
+        <div class="cause-item">
+            <div class="cause-icon">😶</div>
+            <div>
+                <h3>Estigma y falta de acceso a salud mental</h3>
+                <p>
+                    En muchas culturas y comunidades, hablar de salud mental sigue siendo un tabu. Esto
+                    impide que los jovenes busquen ayuda a tiempo. Ademas, los servicios de salud mental
+                    son insuficientes o inaccesibles en gran parte del mundo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Senales de alerta -->
+    <section>
+        <h2>Senales de alerta</h2>
+
+        <div class="warning-box">
+            <strong>Importante:</strong> Reconocer estas senales a tiempo puede salvar vidas. Si identificas varias
+            de estas senales en ti mismo o en alguien cercano, busca ayuda profesional.
+        </div>
+
+        <h3>Senales emocionales</h3>
+        <ul>
+            <li>Tristeza persistente o sensacion de vacio durante mas de dos semanas</li>
+            <li>Irritabilidad o enojo desproporcionado ante situaciones cotidianas</li>
+            <li>Sentimientos de desesperanza, culpa excesiva o inutilidad</li>
+            <li>Perdida de interes en actividades que antes disfrutaba</li>
+            <li>Llanto frecuente sin motivo aparente</li>
+        </ul>
+
+        <h3>Senales fisicas</h3>
+        <ul>
+            <li>Cambios drasticos en el apetito (comer mucho mas o mucho menos)</li>
+            <li>Alteraciones del sueno: insomnio o dormir en exceso</li>
+            <li>Fatiga constante y falta de energia</li>
+            <li>Dolores de cabeza, estomago u otros dolores sin causa medica</li>
+            <li>Descuido de la higiene personal</li>
+        </ul>
+
+        <h3>Senales conductuales</h3>
+        <ul>
+            <li>Aislamiento social: evitar amigos, familia y actividades</li>
+            <li>Caida significativa en el rendimiento academico o laboral</li>
+            <li>Consumo de alcohol, drogas u otras sustancias</li>
+            <li>Autolesiones o conductas de riesgo</li>
+            <li>Hablar sobre la muerte o expresar deseos de no existir</li>
+        </ul>
+    </section>
+
+    <!-- Impacto -->
+    <section>
+        <h2>El impacto de la depresion no tratada</h2>
+        <p>
+            Cuando la depresion no se trata adecuadamente, sus consecuencias se extienden a todas las areas
+            de la vida del joven y pueden tener efectos a largo plazo:
+        </p>
+
+        <h3>En lo academico y profesional</h3>
+        <p>
+            Dificultad para concentrarse, bajo rendimiento, abandono escolar y problemas para mantener un
+            empleo. Esto puede limitar las oportunidades futuras y perpetuar un ciclo de frustracion y
+            desesperanza.
+        </p>
+
+        <h3>En las relaciones interpersonales</h3>
+        <p>
+            Aislamiento progresivo, conflictos con familiares y amigos, dificultad para establecer relaciones
+            saludables y deterioro de la red de apoyo social.
+        </p>
+
+        <h3>En la salud fisica</h3>
+        <p>
+            La depresion cronica esta asociada con un mayor riesgo de enfermedades cardiovasculares, trastornos
+            alimentarios, abuso de sustancias y un sistema inmunologico debilitado.
+        </p>
+
+        <h3>Riesgo de suicidio</h3>
+        <p>
+            El suicidio es la segunda causa de muerte entre jovenes de 15 a 29 anos a nivel mundial. La depresion
+            no tratada es el principal factor de riesgo. Por cada suicidio consumado, se estima que hay 20 intentos
+            mas que no son reportados.
+        </p>
+    </section>
+
+    <!-- La pandemia -->
+    <section>
+        <h2>El efecto de la pandemia COVID-19</h2>
+
+        <div class="quote">
+            "La pandemia no creo la crisis de salud mental juvenil, pero la acelero dramaticamente
+            y la hizo imposible de ignorar."
+        </div>
+
+        <p>
+            La pandemia de COVID-19 tuvo un impacto devastador en la salud mental de los jovenes. Segun un
+            estudio publicado en <em>The Lancet</em> en 2021, la prevalencia global de depresion y ansiedad
+            aumento un 25% durante el primer ano de la pandemia, afectando desproporcionadamente a los jovenes.
+        </p>
+
+        <p>Los factores que contribuyeron incluyen:</p>
+        <ul>
+            <li><strong>Aislamiento social forzado:</strong> Meses de confinamiento interrumpieron las relaciones
+                sociales en una etapa critica del desarrollo.</li>
+            <li><strong>Interrupcion educativa:</strong> Las clases virtuales y el cierre de escuelas afectaron
+                el aprendizaje y la socializacion.</li>
+            <li><strong>Incertidumbre economica:</strong> El desempleo juvenil aumento significativamente.</li>
+            <li><strong>Duelo y perdida:</strong> Muchos jovenes perdieron familiares y seres queridos.</li>
+            <li><strong>Mayor tiempo en pantallas:</strong> El uso de dispositivos digitales se disparo, intensificando
+                problemas preexistentes.</li>
+        </ul>
+
+        <p>
+            Aunque las restricciones de la pandemia han terminado, sus efectos en la salud mental persisten. Muchos
+            expertos hablan de una "pandemia silenciosa" de salud mental que sigue afectando a los jovenes en 2025
+            y 2026.
+        </p>
+    </section>
+
+    <!-- Que se esta haciendo -->
+    <section>
+        <h2>Que se esta haciendo al respecto</h2>
+
+        <h3>A nivel global</h3>
+        <ul>
+            <li>La OMS lanzo en 2021 las <strong>Directrices sobre intervenciones de salud mental para adolescentes</strong>,
+                promoviendo la integracion de servicios de salud mental en escuelas y centros de atencion primaria.</li>
+            <li>UNICEF publico el informe <strong>"Estado Mundial de la Infancia 2021: En Mi Mente"</strong>,
+                que puso la salud mental infantil y adolescente en el centro del debate global.</li>
+            <li>Multiples paises han aumentado la inversion en servicios de salud mental juvenil.</li>
+        </ul>
+
+        <h3>En America Latina</h3>
+        <ul>
+            <li>La OPS (Organizacion Panamericana de la Salud) impulsa programas de prevencion del suicidio y
+                promocion de la salud mental en la region.</li>
+            <li>Paises como Mexico, Colombia y Chile han implementado lineas telefonicas de ayuda y programas
+                de salud mental escolar.</li>
+        </ul>
+
+        <h3>En Espana</h3>
+        <ul>
+            <li>Se implemento el <strong>Telefono 024</strong> como linea de atencion a la conducta suicida (2022).</li>
+            <li>El Plan de Accion de Salud Mental 2022-2024 del Ministerio de Sanidad priorizo la atencion a jovenes.</li>
+            <li>Se han creado programas de deteccion temprana en centros educativos.</li>
+        </ul>
+
+        <h3>Iniciativas tecnologicas</h3>
+        <ul>
+            <li>Aplicaciones de bienestar mental como <strong>Headspace</strong>, <strong>Calm</strong> y
+                <strong>BetterHelp</strong> ofrecen recursos accesibles para jovenes.</li>
+            <li>Plataformas de terapia en linea han democratizado el acceso a profesionales de salud mental.</li>
+            <li>Redes sociales como Instagram y TikTok han implementado herramientas de deteccion y recursos
+                de ayuda ante contenido relacionado con autolesiones o suicidio.</li>
+        </ul>
+    </section>
+
+    <!-- Como ayudar -->
+    <section>
+        <h2>Como puedes ayudar</h2>
+
+        <div class="help-box">
+            <strong>Recuerda:</strong> No necesitas ser profesional de salud mental para hacer una diferencia.
+            Escuchar sin juzgar, mostrar empatia y acompanar a alguien a buscar ayuda profesional puede
+            cambiar una vida.
+        </div>
+
+        <h3>Si eres un joven que esta pasando por esto:</h3>
+        <ol>
+            <li><strong>No estas solo/a.</strong> Lo que sientes es real y valido. La depresion es una enfermedad,
+                no una debilidad.</li>
+            <li><strong>Habla con alguien de confianza.</strong> Un familiar, amigo, profesor o profesional de salud
+                mental puede ayudarte.</li>
+            <li><strong>Busca ayuda profesional.</strong> Un psicologo o psiquiatra puede ofrecer tratamiento efectivo.
+                No hay verguenza en pedir ayuda.</li>
+            <li><strong>Cuida tu bienestar basico.</strong> Duerme bien, alimentate de forma equilibrada, haz ejercicio
+                y limita el tiempo en pantallas.</li>
+            <li><strong>Se paciente contigo mismo/a.</strong> La recuperacion es un proceso. Hay dias mejores y peores,
+                pero la mejoria es posible.</li>
+        </ol>
+
+        <h3>Si conoces a alguien que podria necesitar ayuda:</h3>
+        <ol>
+            <li><strong>Escucha activamente</strong> sin minimizar lo que siente ("todos pasamos por eso" no ayuda).</li>
+            <li><strong>No intentes "arreglarlo"</strong> tu solo/a. Anima a la persona a buscar ayuda profesional.</li>
+            <li><strong>Mantente presente.</strong> Un mensaje, una llamada o una visita pueden significar mas de lo
+                que imaginas.</li>
+            <li><strong>Informate.</strong> Cuanto mas entiendas sobre la depresion, mejor podras acompanar.</li>
+            <li><strong>Toma en serio cualquier mencion al suicidio.</strong> Nunca ignores estas senales.</li>
+        </ol>
+    </section>
+
+    <!-- Recursos y lineas de ayuda -->
+    <section>
+        <h2>Recursos y lineas de ayuda</h2>
+
+        <div class="hotline">
+            <h3>Si necesitas ayuda ahora, contacta:</h3>
+            <p><strong>Espana:</strong> Telefono 024 (Linea de Atencion a la Conducta Suicida)</p>
+            <p><strong>Mexico:</strong> SAPTEL - 55 5259 8121</p>
+            <p><strong>Colombia:</strong> Linea 106 (Linea de la Vida)</p>
+            <p><strong>Argentina:</strong> Centro de Asistencia al Suicida - (011) 5275-1135</p>
+            <p><strong>Chile:</strong> Salud Responde - 600 360 7777</p>
+            <p><strong>Internacional:</strong> <a href="https://findahelpline.com" target="_blank">findahelpline.com</a></p>
+        </div>
+
+        <h3>Recursos en linea</h3>
+        <ul>
+            <li><a href="https://www.who.int/es/health-topics/depression" target="_blank">OMS - Depresion</a></li>
+            <li><a href="https://www.unicef.org/es/salud-mental" target="_blank">UNICEF - Salud Mental</a></li>
+            <li><a href="https://www.nimh.nih.gov/health/topics/depression" target="_blank">NIMH - Depresion (en ingles)</a></li>
+            <li><a href="https://www.paho.org/es/temas/salud-mental" target="_blank">OPS - Salud Mental</a></li>
+        </ul>
+    </section>
+
+    <!-- Mensaje final -->
+    <section>
+        <h2>Un mensaje de esperanza</h2>
+
+        <div class="quote">
+            "La depresion es tratable. Con el apoyo adecuado, la mayoria de los jovenes que la padecen
+            pueden recuperarse y vivir una vida plena y significativa."
+        </div>
+
+        <p>
+            La depresion no define a quien la padece. Es una enfermedad, no una identidad. Con tratamiento
+            adecuado — que puede incluir terapia psicologica, medicacion o una combinacion de ambas — la gran
+            mayoria de las personas mejoran significativamente.
+        </p>
+        <p>
+            Lo mas importante es romper el silencio. Hablar de salud mental no es una senal de debilidad, sino
+            de valentia. Cada conversacion abierta sobre este tema contribuye a reducir el estigma y a crear
+            una sociedad donde pedir ayuda sea tan natural como ir al medico por cualquier otra dolencia.
+        </p>
+        <p>
+            <strong>Si estas leyendo esto y necesitas ayuda, por favor, no esperes mas. Habla con alguien. Mereces
+            sentirte bien.</strong>
+        </p>
+    </section>
+
+</div>
+
+<footer>
+    <p>
+        Pagina creada con fines informativos y de concientizacion.
+        Las estadisticas provienen de fuentes como la OMS, UNICEF, NIMH y OPS.
+    </p>
+    <p>
+        Proyecto <a href="https://github.com/Ballwictb/devballtest" target="_blank">devballtest</a> &mdash; 2026
+    </p>
+</footer>
+
+</body>
+</html>
