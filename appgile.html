@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#7445AD">
+    <title>Appgile - Tu equipo de IA. Estrategia, desarrollo y resultados.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --purple-primary: #7445AD;
+            --purple-dark: #5a3589;
+            --purple-light: #9b7bc7;
+            --purple-bg: #f3eef9;
+            --gray-dark: #1a1a2e;
+            --gray-medium: #6b7280;
+            --gray-light: #9ca3af;
+            --gray-border: #e5e7eb;
+            --white: #ffffff;
+            --bg-light: #f9fafb;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--gray-dark);
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--gray-border);
+            transition: all 0.3s;
+        }
+
+        .header-inner {
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gray-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--purple-primary);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--gray-dark);
+        }
+
+        .btn-contact {
+            background: var(--purple-primary);
+            color: var(--white);
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .btn-contact:hover {
+            background: var(--purple-dark);
+            transform: translateY(-1px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #2d1b4e, #7445AD, #9b6dd7);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 32px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+
+        .btn-hero-primary {
+            background: var(--white);
+            color: var(--purple-primary);
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-hero-secondary {
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: background 0.2s;
+        }
+
+        .btn-hero-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat .number {
+            font-size: 2rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .hero-stat .label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            font-weight: 500;
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        .section {
+            padding: 100px 24px;
+        }
+
+        .section-inner {
+            max-width: 1152px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+
+        .section-title span {
+            color: var(--purple-primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-medium);
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 0 auto 60px;
+        }
+
+        /* ===== PROBLEM SECTION ===== */
+        .problems {
+            background: var(--bg-light);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .problem-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .problem-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--purple-bg);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .problem-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--purple-primary);
+        }
+
+        .problem-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--gray-dark);
+        }
+
+        .problem-card p {
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .problem-cta {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--purple-primary);
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: 16px;
+            padding: 32px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(116, 69, 173, 0.1);
+            border-color: var(--purple-light);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--purple-bg);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--purple-primary);
+        }
+
+        .service-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--gray-dark);
+        }
+
+        .service-card p {
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--purple-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 16px;
+        }
+
+        .service-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s;
+        }
+
+        .service-card:hover .service-link svg {
+            transform: translateX(4px);
+        }
+
+        /* ===== TEAM SECTION ===== */
+        .team-section {
+            background: linear-gradient(135deg, #2d1b4e, #7445AD, #9b6dd7);
+            color: var(--white);
+        }
+
+        .team-inner {
+            max-width: 1152px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .team-left h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .team-left p {
+            opacity: 0.8;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .team-features {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .team-feature {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .team-feature-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .team-feature-icon svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+
+        .team-feature h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .team-feature p {
+            font-size: 0.85rem;
+            opacity: 0.75;
+            line-height: 1.5;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            background: var(--bg-light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .about-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+        }
+
+        .about-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--gray-dark);
+        }
+
+        .about-card p {
+            color: var(--gray-medium);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .about-card .highlight {
+            color: var(--purple-primary);
+            font-weight: 600;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-section p {
+            color: var(--gray-medium);
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .btn-cta-primary {
+            background: var(--purple-primary);
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-cta-primary:hover {
+            background: var(--purple-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--gray-dark);
+            color: var(--white);
+            padding: 60px 24px 30px;
+        }
+
+        .footer-inner {
+            max-width: 1152px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            opacity: 0.6;
+            font-size: 0.9rem;
+            margin-top: 12px;
+            line-height: 1.6;
+        }
+
+        .footer-brand .email {
+            display: block;
+            color: var(--purple-light);
+            margin-top: 16px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-brand .location {
+            opacity: 0.5;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        footer h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer ul li {
+            margin-bottom: 10px;
+        }
+
+        footer ul li a {
+            color: var(--white);
+            opacity: 0.6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        footer ul li a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            opacity: 0.5;
+            font-size: 0.8rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-socials a {
+            color: var(--white);
+            opacity: 0.5;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: opacity 0.2s;
+        }
+
+        .footer-socials a:hover {
+            opacity: 1;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .problem-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .team-left h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-inner">
+        <a href="#" class="logo">
+            <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 5 L90 85 L10 85 Z" fill="#7445AD"/>
+            </svg>
+            <span class="logo-text"><span>app</span>gile</span>
+        </a>
+        <nav>
+            <a href="#servicios">Servicios</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#equipo">Equipo</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+        <a href="#contacto" class="btn-contact">Contactar</a>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">Partner estrategico de IA para empresas</div>
+        <h1>Tu equipo de IA.<br>Estrategia, desarrollo y resultados.</h1>
+        <p>Ayudamos a empresas a implementar inteligencia artificial de forma practica. Desde el diagnostico hasta el producto en produccion.</p>
+        <div class="hero-buttons">
+            <a href="#contacto" class="btn-hero-primary">
+                Agenda una llamada
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#servicios" class="btn-hero-secondary">Ver servicios</a>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="number">+50</span>
+                <span class="label">Proyectos IA</span>
+            </div>
+            <div class="hero-stat">
+                <span class="number">98%</span>
+                <span class="label">Entregas a tiempo</span>
+            </div>
+            <div class="hero-stat">
+                <span class="number">85%</span>
+                <span class="label">Clientes repiten</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section class="section problems">
+    <div class="section-inner">
+        <h2 class="section-title">El 85% de las empresas quiere usar IA.<br><span>Solo el 20% lo hace bien.</span></h2>
+        <p class="section-subtitle">Las empresas saben que necesitan inteligencia artificial. Pero se encuentran con tres barreras:</p>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="problem-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 17H7A5 5 0 017 7h2m6 10h2a5 5 0 000-10h-2m-8 5h10"/></svg>
+                </div>
+                <h3>Estrategia</h3>
+                <p>Muchos cursos, muchos PowerPoints, cero ejecucion. No saben que caso de uso priorizar ni como pasar de la teoria a resultados reales.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <h3>Falta de talento</h3>
+                <p>No tienen equipo interno con experiencia en IA. Contratar es caro y lento.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <h3>Miedo a invertir mal</h3>
+                <p>Han oido historias de proyectos de IA fallidos. No quieren ser los siguientes.</p>
+            </div>
+        </div>
+        <p class="problem-cta">Nosotros resolvemos eso.</p>
+    </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section class="section" id="servicios">
+    <div class="section-inner">
+        <h2 class="section-title">Lo que hacemos</h2>
+        <p class="section-subtitle">Servicios de IA para empresas que quieren resultados, no PowerPoints.</p>
+        <div class="services-grid">
+            <a href="#" class="service-card">
+                <div class="service-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <h3>Estrategia de IA</h3>
+                <p>No sabes por donde empezar? En 2 semanas tendras un roadmap claro con ROI estimado.</p>
+                <span class="service-link">Ver mas <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <h3>Prototipado Rapido</h3>
+                <p>Valida tu idea con un prototipo funcional en 2-4 semanas. Decide con datos, no intuicion.</p>
+                <span class="service-link">Ver mas <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <h3>Desarrollo de Productos con IA</h3>
+                <p>Construimos tu producto de principio a fin. Diseno, desarrollo, IA integrada y lanzamiento.</p>
+                <span class="service-link">Ver mas <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                </div>
+                <h3>Automatizacion Inteligente</h3>
+                <p>Automatizamos procesos con agentes de IA. Menos trabajo manual, mas tiempo para lo importante.</p>
+                <span class="service-link">Ver mas <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                </div>
+                <h3>IA Analytics</h3>
+                <p>Convierte tus datos en decisiones. Dashboards inteligentes, predicciones y alertas automaticas.</p>
+                <span class="service-link">Ver mas <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <h3>CTO as a Service</h3>
+                <p>Direccion tecnica sin contratar a tiempo completo. Arquitectura, stack y gestion de equipos.</p>
+                <span class="service-link">Ver mas <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM SECTION -->
+<section class="section team-section" id="equipo">
+    <div class="team-inner">
+        <div class="team-left">
+            <h2>No somos una consultora.<br>No somos una agencia.<br>Somos tu equipo.</h2>
+            <p>Combinamos vision estrategica con capacidad de ejecucion real. No solo te decimos que hacer &mdash; lo hacemos contigo.</p>
+        </div>
+        <div class="team-features">
+            <div class="team-feature">
+                <div class="team-feature-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                </div>
+                <div>
+                    <h3>Estrategia + Ejecucion</h3>
+                    <p>No te dejamos un PowerPoint. Hacemos el roadmap Y lo construimos contigo.</p>
+                </div>
+            </div>
+            <div class="team-feature">
+                <div class="team-feature-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                    <h3>Resultados, no proyectos</h3>
+                    <p>Medimos el ROI de cada proyecto. Si no hay impacto, no hay exito.</p>
+                </div>
+            </div>
+            <div class="team-feature">
+                <div class="team-feature-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+                </div>
+                <div>
+                    <h3>IA nativa</h3>
+                    <p>No "anadimos IA" a productos existentes. Disenamos con IA desde el inicio.</p>
+                </div>
+            </div>
+            <div class="team-feature">
+                <div class="team-feature-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <div>
+                    <h3>Equipo senior</h3>
+                    <p>Sin juniors en tu proyecto. Experiencia real construyendo productos con IA.</p>
+                </div>
+            </div>
+            <div class="team-feature">
+                <div class="team-feature-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <div>
+                    <h3>Transparencia total</h3>
+                    <p>Sabes exactamente en que se invierte cada euro de tu presupuesto.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT / QUIENES SOMOS -->
+<section class="section about-section" id="nosotros">
+    <div class="section-inner">
+        <h2 class="section-title">Sobre <span>Appgile</span></h2>
+        <p class="section-subtitle">Somos un equipo de ingenieros, disenadores y estrategas apasionados por la inteligencia artificial y su impacto real en los negocios.</p>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Nuestra mision</h3>
+                <p>Democratizar el acceso a la inteligencia artificial para empresas de todos los tamanos. Creemos que la IA no deberia ser un privilegio de las grandes corporaciones, sino una herramienta accesible para cualquier empresa que quiera <span class="highlight">innovar y crecer</span>.</p>
+            </div>
+            <div class="about-card">
+                <h3>Nuestro enfoque</h3>
+                <p>No vendemos humo ni PowerPoints. Cada proyecto comienza con un <span class="highlight">diagnostico real</span> de las necesidades del cliente, seguido de una estrategia clara y ejecucion medible. Trabajamos como extension de tu equipo, no como proveedores externos.</p>
+            </div>
+            <div class="about-card">
+                <h3>Tecnologia que usamos</h3>
+                <p>Trabajamos con las ultimas tecnologias en IA: <span class="highlight">LLMs, Computer Vision, NLP, MLOps</span> y mas. Desde modelos propietarios hasta soluciones open source, elegimos la herramienta correcta para cada problema.</p>
+            </div>
+            <div class="about-card">
+                <h3>Donde estamos</h3>
+                <p>Con base en <span class="highlight">Madrid, Espana</span>, trabajamos con empresas de toda Europa y America Latina. Nuestro equipo es remoto-first, lo que nos permite tener el mejor talento sin importar la ubicacion.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="section cta-section" id="contacto">
+    <div class="section-inner">
+        <h2>Hablemos de tu proyecto</h2>
+        <p>Agenda una llamada de 30 minutos sin compromiso. Te ayudamos a identificar las oportunidades de IA para tu empresa.</p>
+        <div class="cta-buttons">
+            <a href="https://calendly.com/appgile-team/30-minutes-meeting" class="btn-cta-primary" target="_blank">
+                Agenda una llamada
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="logo-text" style="font-size: 1.2rem;"><span style="color: #9b7bc7;">app</span>gile</span>
+                <p>Developing Future<br>Tu equipo de IA. Estrategia, desarrollo y resultados.</p>
+                <a href="mailto:hello@appgile.com" class="email">hello@appgile.com</a>
+                <p class="location">Madrid, Espana</p>
+            </div>
+            <div>
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="#">Estrategia de IA</a></li>
+                    <li><a href="#">Prototipado Rapido</a></li>
+                    <li><a href="#">Desarrollo con IA</a></li>
+                    <li><a href="#">Automatizacion</a></li>
+                    <li><a href="#">IA Analytics</a></li>
+                    <li><a href="#">CTO as a Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Empresa</h3>
+                <ul>
+                    <li><a href="#">Casos de exito</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Metodologia</a></li>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Politica de privacidad</a></li>
+                    <li><a href="#">Aviso legal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Appgile. Todos los derechos reservados.</p>
+            <div class="footer-socials">
+                <a href="https://linkedin.com/company/appgile" target="_blank">LinkedIn</a>
+                <a href="https://github.com/appgile" target="_blank">GitHub</a>
+                <a href="https://wa.me/34919464950" target="_blank">WhatsApp</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
