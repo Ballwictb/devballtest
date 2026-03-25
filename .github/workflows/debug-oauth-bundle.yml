@@ -14,7 +14,6 @@ on:
         description: "Partner a validar en el bundle (ej: CLIENTE_MADRID, CLIENTE_BARCELONA, CLIENTE_6)"
         required: false
         default: CLIENTE_6
-        type: string
       showSamplePartners:
         description: "Mostrar muestra de partners (sin secretos)"
         required: true
