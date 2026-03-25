@@ -1,0 +1,150 @@
+name: Debug OAuth Bundle Secret
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: GitHub Environment
+        required: true
+        default: bundle
+        type: choice
+        options:
+          - bundle
+      partner:
+        description: Partner a validar en el bundle (ej: CLIENTE_MADRID, CLIENTE_BARCELONA, CLIENTE_6)
+        required: false
+        default: CLIENTE_6
+        type: string
+      showSamplePartners:
+        description: Mostrar muestra de partners (sin secretos)
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+jobs:
+  validate-bundle:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+
+    steps:
+      - name: Validate secret exists
+        env:
+          OAUTH_PRE_BUNDLE: ${{ secrets.OAUTH_PRE_BUNDLE }}
+        run: |
+          if [ -z "${OAUTH_PRE_BUNDLE}" ]; then
+            echo "Missing secret OAUTH_PRE_BUNDLE in environment '${{ github.event.inputs.environment }}'." >&2
+            exit 1
+          fi
+
+      - name: Parse bundle and print diagnostics
+        id: bundle_check
+        env:
+          OAUTH_PRE_BUNDLE: ${{ secrets.OAUTH_PRE_BUNDLE }}
+          PARTNER: ${{ github.event.inputs.partner }}
+          SHOW_SAMPLE: ${{ github.event.inputs.showSamplePartners }}
+        run: |
+          python - << 'PY'
+          import collections
+          import json
+          import os
+          import sys
+
+          def fail(msg: str):
+              print(f"[ERROR] {msg}")
+              sys.exit(1)
+
+          payload = os.environ.get("OAUTH_PRE_BUNDLE", "")
+          if not payload:
+              fail("OAUTH_PRE_BUNDLE is empty")
+
+          try:
+              data = json.loads(payload)
+          except Exception as exc:
+              fail(f"OAUTH_PRE_BUNDLE is not valid JSON: {exc}")
+
+          rows = data.get("rows")
+          if not isinstance(rows, list) or not rows:
+              fail("Expected JSON structure: {'rows':[...]} with at least one row")
+
+          required = ("partnerName", "oauthClient_Id", "oauthClientSecret")
+          counter = collections.Counter()
+          missing_required = 0
+          invalid_rows = 0
+
+          for row in rows:
+              if not isinstance(row, dict):
+                  invalid_rows += 1
+                  continue
+              partner = str(row.get("partnerName", "")).strip()
+              if partner:
+                  counter[partner] += 1
+              for key in required:
+                  if not str(row.get(key, "")).strip():
+                      missing_required += 1
+
+          if invalid_rows > 0:
+              fail(f"Bundle has {invalid_rows} invalid non-object rows")
+
+          unique_partners = sorted(counter.keys())
+          duplicated = sorted([p for p, c in counter.items() if c > 1])
+
+          print("=== OAUTH_PRE_BUNDLE diagnostics ===")
+          print(f"rows.total={len(rows)}")
+          print(f"partners.unique={len(unique_partners)}")
+          print(f"rows.duplicated_partner_names={len(duplicated)}")
+          print(f"rows.missing_required_fields={missing_required}")
+
+          if os.environ.get("SHOW_SAMPLE", "false").lower() == "true":
+              sample = unique_partners[:15]
+              print(f"partners.sample={sample}")
+
+          partner_input = (os.environ.get("PARTNER") or "").strip()
+          partner_found = False
+          masked_client_id = "-"
+
+          if partner_input:
+              matched = None
+              for row in rows:
+                  if not isinstance(row, dict):
+                      continue
+                  if str(row.get("partnerName", "")).strip().lower() == partner_input.lower():
+                      matched = row
+                      break
+
+              if matched:
+                  partner_found = True
+                  cid = str(matched.get("oauthClient_Id", "")).strip()
+                  if cid:
+                      masked_client_id = ("*" * max(0, len(cid) - 4)) + cid[-4:]
+                  print(f"partner.lookup={partner_input}")
+                  print("partner.found=true")
+                  print(f"partner.masked_client_id={masked_client_id}")
+              else:
+                  print(f"partner.lookup={partner_input}")
+                  print("partner.found=false")
+
+          output_path = os.environ.get("GITHUB_OUTPUT")
+          if output_path:
+              with open(output_path, "a", encoding="utf-8") as f:
+                  f.write(f"rows_total={len(rows)}\n")
+                  f.write(f"unique_partners={len(unique_partners)}\n")
+                  f.write(f"duplicates_count={len(duplicated)}\n")
+                  f.write(f"missing_required={missing_required}\n")
+                  f.write(f"partner_found={'true' if partner_found else 'false'}\n")
+                  f.write(f"partner_masked_client_id={masked_client_id}\n")
+          PY
+
+      - name: Build summary
+        if: always()
+        run: |
+          echo "### OAuth Bundle Debug" >> "$GITHUB_STEP_SUMMARY"
+          echo "- environment: \`${{ github.event.inputs.environment }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- rows.total: \`${{ steps.bundle_check.outputs.rows_total }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- partners.unique: \`${{ steps.bundle_check.outputs.unique_partners }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- duplicates: \`${{ steps.bundle_check.outputs.duplicates_count }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- missing required fields: \`${{ steps.bundle_check.outputs.missing_required }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- partner found: \`${{ steps.bundle_check.outputs.partner_found }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- partner masked client id: \`${{ steps.bundle_check.outputs.partner_masked_client_id }}\`" >> "$GITHUB_STEP_SUMMARY"
