@@ -1,22 +1,22 @@
 name: Debug OAuth Bundle Secret
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: 
     inputs:
       environment:
-        description: GitHub Environment
+        description: "GitHub Environment"
         required: true
         default: bundle
         type: choice
         options:
           - bundle
       partner:
-        description: Partner a validar en el bundle (ej: CLIENTE_MADRID, CLIENTE_BARCELONA, CLIENTE_6)
+        description: "Partner a validar en el bundle (ej: CLIENTE_MADRID, CLIENTE_BARCELONA, CLIENTE_6)"
         required: false
         default: CLIENTE_6
         type: string
       showSamplePartners:
-        description: Mostrar muestra de partners (sin secretos)
+        description: "Mostrar muestra de partners (sin secretos)"
         required: true
         default: "true"
         type: choice
