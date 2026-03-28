@@ -1,0 +1,33 @@
+name: Manual String Summary
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: "Titulo para el summary"
+        required: true
+        default: "Texto manual"
+        type: string
+      text:
+        description: "Texto libre a mostrar en el summary"
+        required: true
+        default: "Escribe aqui tu mensaje"
+        type: string
+
+jobs:
+  show-manual-text:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print input in logs
+        run: |
+          echo "Title: ${{ github.event.inputs.title }}"
+          echo "Text: ${{ github.event.inputs.text }}"
+
+      - name: Write summary
+        run: |
+          {
+            echo "### ${{ github.event.inputs.title }}"
+            echo
+            echo "${{ github.event.inputs.text }}"
+          } >> "$GITHUB_STEP_SUMMARY"
